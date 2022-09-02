@@ -5,23 +5,27 @@ export default function Text(props) {
     // console.log("Uppercase was clicked"+ text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase!", "success");
   };
   const handleOnClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to Lower case!", "success");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
-  const [text, setText] = useState("");
+  
   
   const resetbutton =()=>{
     let resetcontant =""
     setText(resetcontant)
+    props.showAlert("Text was removed", "success");
   } 
   const removeExtraSpaces=()=>{
     let removeSpace =text.split(/[ ]+/);
     setText(removeSpace.join(" "))
+    props.showAlert("Extra space was removed!", "success");
   }
 
     const handleCopy = () => {
@@ -29,8 +33,9 @@ export default function Text(props) {
       text.select();
       text.setSelectionRange(0, 9999);
       navigator.clipboard.writeText(text.value);
+      props.showAlert("Text was coppied!", "success");
   }
-
+  const [text, setText] = useState("");
   
   return (
     <>
@@ -86,12 +91,12 @@ export default function Text(props) {
           Reset
         </button>
         <div>
-        <h7 className="mx-4">Characters Count {text.length}</h7>
-        <h7> Number Of Words{text.split(" ").length}</h7>
+        <p className="mx-4">Characters Count {text.length}</p>
+        <p className="mx-4">Words {text.split(/\s+/).filter((element)=>{return element.length!==0}).length}  </p>
         </div>
-        <div className="my-2">
-          preview  
-          <div className="my-2">{text}
+        <div className="my-4">
+          Preview  
+          <div className="my-4">{text.length>0?text:"Nothing to preview!"}
           </div>
         </div>
       </div>
