@@ -2,6 +2,7 @@ import React from "react";
 import propTypes from 'prop-types'
 
 
+
 export default function Navbar(props) {
   return (
     <div>
@@ -35,15 +36,7 @@ export default function Navbar(props) {
               </li>
               <li className="nav-item dropdown">
                 
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Action
-                    </a>
-                  </li>
-                                 
-                  
-                </ul>
+                
               </li>
               
             </ul>
